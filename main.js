@@ -1,1 +1,19 @@
-console.log("hellos");
+const { log } = require("console");
+const { crawlPage } = require("./crawl.js");
+function main() {
+  if (process.argv.length < 3) {
+    log("no website provided");
+    process.exit(1);
+  }
+  if (process.argv.length > 3) {
+    log("too many command line args");
+    process.exit(1);
+  }
+
+  const baseURL = process.argv[2];
+
+  log(`starting crawl of ${baseURL}`);
+  crawlPage(baseURL);
+}
+
+main();
